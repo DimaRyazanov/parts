@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: header(title='Главная')">
+</head>
+<body>
+<nav th:replace="template :: navbar"></nav>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">JavaRush тестовое задание на стажировку №1</h1>
+        <p class="lead">Это простое web приложение для учета компьютерных комплектующих, для сдачи тестового задания.</p>
+        <hr class="my-4">
+        <p>Вы можете отобразить таблицу с хранящимися на складе комплетующих. А так же произвести CRUD операции над ними</p>
+        <a class="btn btn-primary btn-lg" href="/part/create" role="button">Добавить комплектующее</a>
+        <a class="btn btn-primary btn-lg" href="/part/parts" role="button">Список компьютерных комплектующих</a>
+    </div>
+</div>
+<div th:replace="template :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: header(title='Изменить комплектующее')"></head>
+<body>
+<nav th:replace="template :: navbar"></nav>
+<div class="container">
+    <h1>Изменить комплектующее</h1>
+    <form action="#" th:action="@{'/part/edit/' + ${part.id}}" th:object="${part}" method="post">
+        <input id="part_id" type="hidden" th:field="*{id}" th:value="${part.id}"/>
+        <div class="form-group">
+            <label for="part_name">Наименование</label>
+            <input type="text" class="form-control" id="part_name" aria-describedby="part_name_help"
+                   placeholder="Введите наименование комплектующего" th:field="*{name}"/>
+            <small id="part_name_help" class="form-text text-muted">Обязательно. Минимум 3 символа</small>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('name')}">
+                Проверьте правильность ввода наименование. Минимум 3 символа
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="part_count">Количество</label>
+            <input type="text" class="form-control" id="part_count" aria-describedby="part_count_help"
+                   placeholder="Введитель количество на складе" th:field="*{count}"/>
+            <small id="part_count_help" class="form-text text-muted">Обязательно. Минимальное количество на складе 0.</small>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('count')}">
+                Введите количество комплектующих на складе >=0
+            </div>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="part_required" th:field="*{required}"/>
+            <label class="form-check-label" for="part_required">Необходимо для сборки ПК?</label>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <input type="submit" class="btn btn-primary" th:value="Сохранить"/>
+            <input type="reset" class="btn btn-secondary" th:value="Сбросить"/>
+        </div>
+    </form>
+    <br/>
+    <a class="btn btn-primary" href="/part/parts" role="button">Список комплектующих</a>
+</div>
+<div th:replace="template :: footer"></div>
+</body>
+</html>

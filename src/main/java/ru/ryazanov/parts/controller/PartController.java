@@ -54,7 +54,7 @@ public class PartController {
         }
 
         int currentPage = page.orElse(1);
-        int pageSize = size.orElse(3);
+        int pageSize = size.orElse(10);
 
         Page<Part> partPage = partService.findPaginated(PageRequest.of(currentPage - 1, pageSize), parts);
 
